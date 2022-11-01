@@ -1,0 +1,13 @@
+br\bra\inventariados\entities\Marca.class
+br\bra\inventariados\controllers\AcaoController.class
+br\bra\inventariados\entities\Acao.class
+br\bra\inventariados\repositories\AcaoRepository.class
+br\bra\inventariados\entities\Localizacao.class
+br\bra\inventariados\entities\Tipo.class
+br\bra\inventariados\services\AcaoService.class
+br\bra\inventariados\entities\Modelo.class
+br\bra\inventariados\InventariadosApplication.class
+br\bra\inventariados\entities\Imobilizado.class
+br\bra\inventariados\payloads\AcaoReponse.class
+br\bra\inventariados\entities\Item.class
+br\bra\inventariados\payloads\AcaoRequest.class
