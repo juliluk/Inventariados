@@ -1,19 +1,17 @@
 package br.bra.inventariados.entities;
 
 import lombok.Data;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Table(name = "TbItem")
 @Entity
 public class Item {
     @Id
-    @Column(name = "idItem")
-    private Long idItem;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
+
     @Column(name = "descricao")
     private String descricao;
 }

@@ -1,13 +1,12 @@
 package br.bra.inventariados.services;
 
 import br.bra.inventariados.entities.Acao;
-import br.bra.inventariados.payloads.AcaoReponse;
 import br.bra.inventariados.repositories.AcaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +26,28 @@ public class AcaoService {
         return new PageImpl<>(
                 acaoRepository.findAll(),
                 pageRequest, size);
+
+    }
+
+    public Acao save(Acao acao){
+
+        return acaoRepository.save(acao);
+
+    }
+
+    public void delete(Acao acao){
+
+        acaoRepository.delete(acao);
+
+    }
+
+    public Optional<Acao> findById(Long id){
+
+       try{
+           return acaoRepository.findAcaoById(id);
+       }catch (Exception ex){
+           return null;
+       }
 
     }
 

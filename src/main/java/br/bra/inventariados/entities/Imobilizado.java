@@ -2,7 +2,6 @@ package br.bra.inventariados.entities;
 
 import lombok.Data;
 
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -11,82 +10,69 @@ import java.time.LocalDateTime;
 @Entity
 public class Imobilizado {
     @Id
-    @Column(name = "idImobilizado")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idImobilizado;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private Long id;
 
-    @ManyToOne
+    @Column(name = "localizacao_id")
+    private Long idLocalizacao;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "localizacao_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Localizacao localizacao;
 
-    @ManyToOne
+
+    @Column(name = "item_id")
+    private Long idItem;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "item_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Item item;
 
-    @ManyToOne
+    @Column(name = "tipo_id")
+    private Long idTipo;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tipo_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Tipo tipo;
 
-    @ManyToOne
+    @Column(name = "modelo_id")
+    private Long idModelo;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "modelo_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Modelo modelo;
 
-    @ManyToOne
+    @Column(name = "marca_id")
+    private Long idMarca;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "marca_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Marca marca;
 
-    @ManyToOne
+    @Column(name = "localizacao_fisica_id")
+    private Long idLocalizacaoFisica;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "localizacao_fisica_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Localizacao localizacaoFisica;
 
-    @ManyToOne
+    @Column(name = "acao_id")
+    private Long idAcao;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "acao_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Acao acao;
 
-    @ManyToOne
+    @Column(name = "localizacao_fisica_juncao_id")
+    private Long idLocalizacaoFisicaJuncao;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "localizacao_fisica_juncao_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Localizacao localizacaoFisicaJuncao;
 
-    /*
-    @ManyToOne
-    @JoinTable(name = "TbLocalizacao", joinColumns = @JoinColumn(name = "idLocalizacao", referencedColumnName = "idLocalizacao"),
-            inverseJoinColumns = @JoinColumn(name = "idLocalizacao", referencedColumnName = "idLocalizacao"))
-    private Localizacao localizacao;
-    */
 
-    /*
-    @ManyToOne
-    @JoinTable(name = "TbItem", joinColumns = @JoinColumn(name = "idItem", referencedColumnName = "idItem"),
-            inverseJoinColumns = @JoinColumn(name = "idItem", referencedColumnName = "idItem"))
-    private Item item;
-
-    @ManyToOne
-    @JoinTable(name = "TbTipo", joinColumns = @JoinColumn(name = "idTipo", referencedColumnName = "idTipo"),
-            inverseJoinColumns = @JoinColumn(name = "idTipo", referencedColumnName = "idTipo"))
-    private Tipo tipo;
-
-    @ManyToOne
-    @JoinTable(name = "TbModelo", joinColumns = @JoinColumn(name = "idModelo", referencedColumnName = "idModelo"),
-            inverseJoinColumns = @JoinColumn(name = "idModelo", referencedColumnName = "idModelo"))
-    private Modelo modelo;
-
-    @ManyToOne
-    @JoinTable(name = "TbMarca", joinColumns = @JoinColumn(name = "idMarca", referencedColumnName = "idMarca"),
-            inverseJoinColumns = @JoinColumn(name = "idMarca", referencedColumnName = "idMarca"))
-    private Marca marca;
-    */
-
-    /*
-    @ManyToOne
-    @JoinTable(name = "TbLocalizacao", joinColumns = @JoinColumn(name = "idLocalizacaoFisica", referencedColumnName = "idLocalizacao"),
-            inverseJoinColumns = @JoinColumn(name = "idLocalizacaoFisica", referencedColumnName = "idLocalizacao"))
-    private Localizacao localizacaoFisica;
-    */
-
-        /*
-    @ManyToOne
-    @JoinTable(name = "TbAcao", joinColumns = @JoinColumn(name = "idAcao", referencedColumnName = "idAcao"),
-            inverseJoinColumns = @JoinColumn(name = "idAcao", referencedColumnName = "idAcao"))
-    private Acao acao;
-
-    @ManyToOne
-    @JoinTable(name = "TbLocalizacao", joinColumns = @JoinColumn(name = "idLocalizacaoFisicaJuncao", referencedColumnName = "idLocalizacao"),
-            inverseJoinColumns = @JoinColumn(name = "idLocalizacaoFisicaJuncao", referencedColumnName = "idLocalizacao"))
-    private Localizacao localizacaoFisicaJuncao;
-
-    */
+    /*--*/
 
     @Column(name = "nrSerieSap")
     private String nrSerieSap;
