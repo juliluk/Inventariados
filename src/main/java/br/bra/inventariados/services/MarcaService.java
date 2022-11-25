@@ -18,7 +18,7 @@ public class MarcaService {
 
     private final MarcaRepository marcaRepository;
 
-    public Page<Marca> findAll(){
+    public Page<Marca> findAll() throws RuntimeException{
 
         int page = 0;
         int size = 10;
@@ -33,25 +33,21 @@ public class MarcaService {
 
     }
 
-    public Marca save(Marca marca){
+    public Marca save(Marca marca) throws RuntimeException{
 
         return marcaRepository.save(marca);
 
     }
 
-    public void delete(Marca marca){
+    public void delete(Marca marca) throws RuntimeException{
 
         marcaRepository.delete(marca);
 
     }
 
-    public Optional<Marca> findById(Long id){
+    public Optional<Marca> findById(Long id) throws RuntimeException{
 
-       try{
-           return marcaRepository.findMarcaById(id);
-       }catch (Exception ex){
-           return null;
-       }
+       return marcaRepository.findMarcaById(id);
 
     }
 

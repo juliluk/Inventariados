@@ -18,71 +18,55 @@ public class ModeloController {
     //GET - ALL
     @GetMapping(path = "/getAll", produces = "application/json")
     @ApiResponse(description = "getAll")
+    @ExceptionHandler(RuntimeException.class)
     public Page<Modelo> getAll(){
-        try {
-            return modeloService.findAll();
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return modeloService.findAll();
+
     }
 
     //POST
     @PostMapping(path = "/save", produces = "application/json")
     @ApiResponse(description = "save")
+    @ExceptionHandler(RuntimeException.class)
     public Modelo save(@RequestBody Modelo modelo){
-        try {
-            return modeloService.save(modelo);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return modeloService.save(modelo);
+
     }
 
     //GET - Por ID
     @GetMapping(path = "/findById/{id}", produces = "application/json")
     @ApiResponse(description = "findById")
+    @ExceptionHandler(RuntimeException.class)
     public Optional<Modelo> save(@PathVariable("id") Long modeloId){
-        try {
-            return modeloService.findById(modeloId);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return modeloService.findById(modeloId);
+
     }
 
     //PUT
     @PutMapping(path = "/update", produces = "application/json")
     @ApiResponse(description = "update")
+    @ExceptionHandler(RuntimeException.class)
     public Modelo update(@RequestBody Modelo modelo){
-        try {
-            return modeloService.save(modelo);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return modeloService.save(modelo);
+
     }
 
     //DELETE
     @DeleteMapping(path = "/delete/{id}")
     @ApiResponse(description = "delete")
+    @ExceptionHandler(RuntimeException.class)
     public void delete(@PathVariable("id") Long modeloId){
-        try {
 
-            Optional<Modelo> modelo = modeloService.findById(modeloId);
-            if(modelo.isPresent()) {
-                Modelo nmodelo = modelo.get();
-                modeloService.delete(nmodelo);
-            }
+        Optional<Modelo> modelo = modeloService.findById(modeloId);
+        if(modelo.isPresent()) {
+            Modelo nmodelo = modelo.get();
+            modeloService.delete(nmodelo);
         }
-        catch(Exception exception)
-        {
-            return;
-        }
+
     }
 
 }

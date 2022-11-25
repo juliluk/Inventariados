@@ -1,5 +1,7 @@
 package br.bra.inventariados.entities;
 
+/*package br.bra.inventariados.entities;
+
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,4 +16,17 @@ public class Acao {
     private Long id;
     @Column(name = "descricao")
     private String descricao;
+}
+*/
+
+
+public enum Acao {
+    TRANSFERIR(1),
+    BAIXAR(2),
+    NENHUMA(3);
+
+    private Integer id;
+    Acao(Integer id) {
+        this.id = id;
+    }
 }

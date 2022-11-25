@@ -17,7 +17,7 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    public Page<Item> findAll(){
+    public Page<Item> findAll() throws RuntimeException{
 
         int page = 0;
         int size = 10;
@@ -32,25 +32,22 @@ public class ItemService {
 
     }
 
-    public Item save(Item item){
+    public Item save(Item item) throws RuntimeException{
 
         return itemRepository.save(item);
 
     }
 
-    public void delete(Item item){
+    public void delete(Item item) throws RuntimeException{
+        itemRepository.findItemById(item.getId());
 
         itemRepository.delete(item);
 
     }
 
-    public Optional<Item> findById(Long id){
+    public Optional<Item> findById(Long id) throws RuntimeException{
 
-       try{
-           return itemRepository.findItemById(id);
-       }catch (Exception ex){
-           return null;
-       }
+       return itemRepository.findItemById(id);
 
     }
 

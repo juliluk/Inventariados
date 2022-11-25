@@ -18,7 +18,7 @@ public class ModeloService {
 
     private final ModeloRepository modeloRepository;
 
-    public Page<Modelo> findAll(){
+    public Page<Modelo> findAll() throws RuntimeException{
 
         int page = 0;
         int size = 10;
@@ -33,25 +33,22 @@ public class ModeloService {
 
     }
 
-    public Modelo save(Modelo modelo){
+    public Modelo save(Modelo modelo) throws RuntimeException{
 
         return modeloRepository.save(modelo);
 
     }
 
-    public void delete(Modelo modelo){
+    public void delete(Modelo modelo) throws RuntimeException{
 
         modeloRepository.delete(modelo);
 
     }
 
-    public Optional<Modelo> findById(Long id){
+    public Optional<Modelo> findById(Long id) throws RuntimeException{
 
-       try{
-           return modeloRepository.findModeloById(id);
-       }catch (Exception ex){
-           return null;
-       }
+       return modeloRepository.findModeloById(id);
+
 
     }
 

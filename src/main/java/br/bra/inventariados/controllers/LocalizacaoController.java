@@ -19,71 +19,55 @@ public class LocalizacaoController {
     //GET - ALL
     @GetMapping(path = "/getAll", produces = "application/json")
     @ApiResponse(description = "getAll")
+    @ExceptionHandler(RuntimeException.class)
     public Page<Localizacao> getAll(){
-        try {
-            return localizacaoService.findAll();
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return localizacaoService.findAll();
+
     }
 
     //POST
     @PostMapping(path = "/save", produces = "application/json")
     @ApiResponse(description = "save")
+    @ExceptionHandler(RuntimeException.class)
     public Localizacao save(@RequestBody Localizacao localizacao){
-        try {
-            return localizacaoService.save(localizacao);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return localizacaoService.save(localizacao);
+
     }
 
     //GET - Por ID
     @GetMapping(path = "/findById/{id}", produces = "application/json")
     @ApiResponse(description = "findById")
+    @ExceptionHandler(RuntimeException.class)
     public Optional<Localizacao> save(@PathVariable("id") Long localizacaoId){
-        try {
-            return localizacaoService.findById(localizacaoId);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return localizacaoService.findById(localizacaoId);
+
     }
 
     //PUT
     @PutMapping(path = "/update", produces = "application/json")
     @ApiResponse(description = "update")
+    @ExceptionHandler(RuntimeException.class)
     public Localizacao update(@RequestBody Localizacao localizacao){
-        try {
-            return localizacaoService.save(localizacao);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return localizacaoService.save(localizacao);
+
     }
 
     //DELETE
     @DeleteMapping(path = "/delete/{id}")
     @ApiResponse(description = "delete")
+    @ExceptionHandler(RuntimeException.class)
     public void delete(@PathVariable("id") Long localizacaoId){
-        try {
 
-            Optional<Localizacao> localizacao = localizacaoService.findById(localizacaoId);
-            if(localizacao.isPresent()) {
-                Localizacao nlocalizacao = localizacao.get();
-                localizacaoService.delete(nlocalizacao);
-            }
+        Optional<Localizacao> localizacao = localizacaoService.findById(localizacaoId);
+        if(localizacao.isPresent()) {
+            Localizacao nlocalizacao = localizacao.get();
+            localizacaoService.delete(nlocalizacao);
         }
-        catch(Exception exception)
-        {
-            return;
-        }
+
     }
 
 }

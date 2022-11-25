@@ -60,9 +60,12 @@ public class Imobilizado {
     @Column(name = "acao_id")
     private Long idAcao;
 
+    /*
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "acao_id", referencedColumnName = "id", insertable=false, updatable=false)
     private Acao acao;
+    */
+
 
     @Column(name = "localizacao_fisica_juncao_id")
     private Long idLocalizacaoFisicaJuncao;

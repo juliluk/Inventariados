@@ -19,71 +19,53 @@ public class ItemController {
     //GET - ALL
     @GetMapping(path = "/getAll", produces = "application/json")
     @ApiResponse(description = "getAll")
+    @ExceptionHandler(RuntimeException.class)
     public Page<Item> getAll(){
-        try {
-            return itemService.findAll();
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return itemService.findAll();
+
     }
 
     //POST
     @PostMapping(path = "/save", produces = "application/json")
     @ApiResponse(description = "save")
+    @ExceptionHandler(RuntimeException.class)
     public Item save(@RequestBody Item item){
-        try {
-            return itemService.save(item);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return itemService.save(item);
+
     }
 
     //GET - Por ID
     @GetMapping(path = "/findById/{id}", produces = "application/json")
     @ApiResponse(description = "findById")
+    @ExceptionHandler(RuntimeException.class)
     public Optional<Item> save(@PathVariable("id") Long itemId){
-        try {
-            return itemService.findById(itemId);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+
+        return itemService.findById(itemId);
+
     }
 
     //PUT
     @PutMapping(path = "/update", produces = "application/json")
     @ApiResponse(description = "update")
-    public Item update(@RequestBody Item item){
-        try {
-            return itemService.save(item);
-        }
-        catch(Exception exception)
-        {
-            return null;
-        }
+    @ExceptionHandler(RuntimeException.class)
+    public Item update(@RequestBody Item item) {
+        return itemService.save(item);
     }
 
     //DELETE
     @DeleteMapping(path = "/delete/{id}")
     @ApiResponse(description = "delete")
+    @ExceptionHandler(RuntimeException.class)
     public void delete(@PathVariable("id") Long itemId){
-        try {
 
-            Optional<Item> item = itemService.findById(itemId);
-            if(item.isPresent()) {
-                Item nitem = item.get();
-                itemService.delete(nitem);
-            }
+        Optional<Item> item = itemService.findById(itemId);
+        if(item.isPresent()) {
+            Item nitem = item.get();
+            itemService.delete(nitem);
         }
-        catch(Exception exception)
-        {
-            return;
-        }
+
     }
 
 }

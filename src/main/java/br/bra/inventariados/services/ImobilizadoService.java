@@ -18,7 +18,7 @@ public class ImobilizadoService {
 
     private final ImobilizadoRepository imobilizadoRepository;
 
-    public Page<Imobilizado> findAll(){
+    public Page<Imobilizado> findAll() throws RuntimeException{
 
         int page = 0;
         int size = 10;
@@ -33,25 +33,21 @@ public class ImobilizadoService {
 
     }
 
-    public Imobilizado save(Imobilizado imobilizado){
+    public Imobilizado save(Imobilizado imobilizado) throws RuntimeException{
 
         return imobilizadoRepository.save(imobilizado);
 
     }
 
-    public void delete(Imobilizado imobilizado){
+    public void delete(Imobilizado imobilizado) throws RuntimeException{
 
         imobilizadoRepository.delete(imobilizado);
 
     }
 
-    public Optional<Imobilizado> findById(Long id){
+    public Optional<Imobilizado> findById(Long id) throws RuntimeException{
 
-       try{
-           return imobilizadoRepository.findImobilizadoById(id);
-       }catch (Exception ex){
-           return null;
-       }
+       return imobilizadoRepository.findImobilizadoById(id);
 
     }
 

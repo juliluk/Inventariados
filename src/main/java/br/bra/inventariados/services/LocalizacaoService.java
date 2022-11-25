@@ -18,7 +18,7 @@ public class LocalizacaoService {
 
     private final LocalizacaoRepository localizacaoRepository;
 
-    public Page<Localizacao> findAll(){
+    public Page<Localizacao> findAll() throws RuntimeException{
 
         int page = 0;
         int size = 10;
@@ -33,25 +33,21 @@ public class LocalizacaoService {
 
     }
 
-    public Localizacao save(Localizacao localizacao){
+    public Localizacao save(Localizacao localizacao) throws RuntimeException{
 
         return localizacaoRepository.save(localizacao);
 
     }
 
-    public void delete(Localizacao localizacao){
+    public void delete(Localizacao localizacao) throws RuntimeException{
 
         localizacaoRepository.delete(localizacao);
 
     }
 
-    public Optional<Localizacao> findById(Long id){
+    public Optional<Localizacao> findById(Long id) throws RuntimeException{
 
-       try{
-           return localizacaoRepository.findLocalizacaoById(id);
-       }catch (Exception ex){
-           return null;
-       }
+       return localizacaoRepository.findLocalizacaoById(id);
 
     }
 

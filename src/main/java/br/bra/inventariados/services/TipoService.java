@@ -18,7 +18,7 @@ public class TipoService {
 
     private final TipoRepository tipoRepository;
 
-    public Page<Tipo> findAll(){
+    public Page<Tipo> findAll() throws RuntimeException{
 
         int page = 0;
         int size = 10;
@@ -33,25 +33,21 @@ public class TipoService {
 
     }
 
-    public Tipo save(Tipo tipo){
+    public Tipo save(Tipo tipo) throws RuntimeException{
 
         return tipoRepository.save(tipo);
 
     }
 
-    public void delete(Tipo tipo){
+    public void delete(Tipo tipo) throws RuntimeException{
 
         tipoRepository.delete(tipo);
 
     }
 
-    public Optional<Tipo> findById(Long id){
+    public Optional<Tipo> findById(Long id) throws RuntimeException{
 
-       try{
-           return tipoRepository.findTipoById(id);
-       }catch (Exception ex){
-           return null;
-       }
+       return tipoRepository.findTipoById(id);
 
     }
 
